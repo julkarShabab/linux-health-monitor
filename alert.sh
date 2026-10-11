@@ -1,6 +1,7 @@
 #!/bin/bash
 # alert.sh - runs health-check.sh and sends a Telegram message only when the status CHANGES.
 # HEALTHY -> problem = alert, problem -> HEALTHY = RECOVERED, same status again = silence.
+# It also asks health-check.sh to save one history row (for the web page charts).
 
 BASE="$HOME/health-monitor"              # project folder
 STATE_FILE="$BASE/logs/last_status"      # remembers the status of the previous run
@@ -12,7 +13,7 @@ if [ ! -f "$BASE/telegram.conf" ]; then
 fi
 source "$BASE/telegram.conf"
 
-REPORT=$("$BASE/health-check.sh")        # run the check and capture the report text
+REPORT=$(RECORD_HISTORY=1 "$BASE/health-check.sh")   # run the check; RECORD_HISTORY=1 saves a history row
 CODE=$?                                  # exit code: 0 healthy, 1 warning, 2 critical
 
 echo "$REPORT"                           # print the report so the log still gets every run
