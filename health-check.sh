@@ -7,7 +7,7 @@
 # Limits can be overridden for one run, e.g.:  DISK_WARN=10 ./health-check.sh
 CPU_WARN=${CPU_WARN:-80}      # warn if CPU usage % is above this
 RAM_WARN=${RAM_WARN:-80}      # warn if RAM usage % is above this
-DISK_WARN=${DISK_WARN:-80}    # warn if disk usage % is above this
+DISK_WARN=${DISK_WARN:-95}    # warn if disk usage % is above this
 SERVICES=("ssh" "nginx")      # services that must be running (add more names here)
 
 # ---------- State ----------
