@@ -1,0 +1,12 @@
+# health-page.service - what to run: rebuild the HTML status page
+[Unit]
+Description=Linux health monitor - rebuild the status web page
+
+[Service]
+# Runs once and exits
+Type=oneshot
+# Same user that owns /var/www/health
+User=shabab
+ExecStart=/home/shabab/health-monitor/make-page.sh
+# Discard normal output (the page is the result)
+StandardOutput=null

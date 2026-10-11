@@ -1,0 +1,15 @@
+# health-alert.service - what to run: the health check with Telegram alerts
+[Unit]
+Description=Linux health monitor - check and alert
+
+[Service]
+# Runs once and exits (a job, not a long-running program)
+Type=oneshot
+# Run as your user so file ownership stays the same
+User=shabab
+ExecStart=/home/shabab/health-monitor/alert.sh
+# Exit 1 (WARNING) and 2 (CRITICAL) are not failures
+SuccessExitStatus=1 2
+# Append every report and error to the log
+StandardOutput=append:/home/shabab/health-monitor/logs/health.log
+StandardError=append:/home/shabab/health-monitor/logs/health.log

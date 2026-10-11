@@ -1,0 +1,15 @@
+# health-page.timer - when to run health-page.service
+[Unit]
+Description=Rebuild the health status page every minute
+
+[Timer]
+# Every minute
+OnCalendar=minutely
+# Fire on time
+AccuracySec=1s
+# Catch up after downtime
+Persistent=true
+
+[Install]
+# Start this timer at boot
+WantedBy=timers.target

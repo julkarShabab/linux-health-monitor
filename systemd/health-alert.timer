@@ -1,0 +1,15 @@
+# health-alert.timer - when to run health-alert.service
+[Unit]
+Description=Run the health alert check every 5 minutes
+
+[Timer]
+# Every 5 minutes on the clock (:00, :05, :10 ...)
+OnCalendar=*:0/5
+# Run a missed check after the server was off
+Persistent=true
+# Fire on time (the default allows up to 1 minute of drift)
+AccuracySec=1s
+
+[Install]
+# Start this timer at boot
+WantedBy=timers.target
