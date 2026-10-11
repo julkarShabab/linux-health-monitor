@@ -1,0 +1,3 @@
+# telegram.conf.example - template only. Copy to telegram.conf and fill in real values.
+BOT_TOKEN="PUT_YOUR_BOT_TOKEN_HERE"   # from @BotFather
+CHAT_ID="PUT_YOUR_CHAT_ID_HERE"       # from the getUpdates call
