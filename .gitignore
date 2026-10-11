@@ -1,0 +1,15 @@
+# .gitignore - files Git must never track
+
+# Secrets: the real Telegram token and chat ID
+telegram.conf
+
+# Any other possible secret files (safety net)
+*.env
+.env
+*.key
+*.pem
+
+# Runtime output, not source code
+logs/
+*.log
+*.tmp
